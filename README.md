@@ -10,13 +10,21 @@ This project encompasses the fundamental aspects of building a native applicatio
 ## Get Started
 
 * Clone this repository
-`git clone https://github.com/emrachid/UdaciCards`
+```
+git clone https://github.com/emrachid/UdaciCards
+```
 * Enter into project root path
-`cd UdaciCards`
+```
+cd UdaciCards
+```
 * Download dependencies using `yarn` or `npm`
-`yarn install`
-* Start application
-`yarn start`
+```
+yarn install
+```
+* Start application using `yarn` or `npm`
+```
+yarn start
+```
 * Download and install [Expo](https://expo.io/tools#client) client application in your device for testing purpose
 * Open Expo application and scan QR code that appears on the terminal after executing `yarn start`
 * This project will execute on your device
