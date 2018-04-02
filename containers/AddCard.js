@@ -15,9 +15,7 @@ class AddCard extends React.Component {
 
   handleSubmit = () => {
     const { deckKey } = this.props.navigation.state.params;
-    const questions = (this.props.questions)
-                        ? [ ...this.props.questions, { question, answer }]
-                        : [{ question, answer }]
+
     let errorMessage = '';
     const question = this.state.question.trim();
     if (!question) {
@@ -33,6 +31,10 @@ class AddCard extends React.Component {
       alert(errorMessage);
       return;
     }
+
+    const questions = (this.props.questions)
+                        ? [ ...this.props.questions, { question, answer }]
+                        : [{ question, answer }]
 
     addCardToDeck(deckKey, questions)
       .then(this.props.dispatch(addCard(deckKey, question, answer)));

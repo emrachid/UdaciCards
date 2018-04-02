@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
-import { CommonStyles } from './CommonStyles';
+import { View, StyleSheet } from 'react-native';
 import Button from './Button';
 
 const ButtonsGroup = ({
@@ -16,7 +15,7 @@ const ButtonsGroup = ({
   disabled2,
   opacity2,
 }) => (
-  <View style={CommonStyles.btnGroup}>
+  <View style={styles.btnGroup}>
     <Button
       btnTxtColor={btnTxtColor1}
       btnBackgroundColor={btnBackgroundColor1}
@@ -24,7 +23,7 @@ const ButtonsGroup = ({
       borderWidth={borderWidth1}>
       {btnTxt1}
     </Button>
-    <View style={CommonStyles.spaceBetweenBtns} />
+    <View style={styles.spaceBetweenBtns} />
     <Button
       btnTxtColor={btnTxtColor2}
       btnBackgroundColor={btnBackgroundColor2}
@@ -35,5 +34,15 @@ const ButtonsGroup = ({
     </Button>
   </View>
 );
+
+const styles = StyleSheet.create({
+  btnGroup: {
+    justifyContent: 'flex-end',
+    padding:20,
+  },
+  spaceBetweenBtns: {
+    padding:5,
+  },
+});
 
 export default ButtonsGroup;

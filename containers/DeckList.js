@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { StyleSheet,Text, View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
 import { ActivityIndicator, TouchableHighlight } from 'react-native';
 import { gray, lightGray, white } from '../utils/colors';
 import { getDecks } from '../utils/api';

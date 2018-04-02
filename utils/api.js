@@ -43,7 +43,7 @@ export const getDeck = () => {};
 export const saveDeckTitle = (title) => {
   return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify({
     [title]: {
-      title: title,
+      title,
     }
   }));
 };
@@ -51,7 +51,7 @@ export const saveDeckTitle = (title) => {
 export const addCardToDeck = (title, questions) => {
   return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify({
     [title]: {
-      questions
+      questions,
     }
   }));
 };

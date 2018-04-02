@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { clearLocalNotification, setLocalNotification } from '../utils/notification';
 import { white, red, green, black } from '../utils/colors';
 import ButtonsGroup from '../components/ButtonsGroup';
@@ -75,7 +75,9 @@ class QuizView extends React.Component {
         <View style={styles.container}>
           <View style={styles.body}>
             <Text style={styles.bodyTxt1}>Quiz completed!!!</Text>
-            <Text style={styles.bodyTxt2}>{correctAnswers/questions.length*100}% corrected answers</Text>
+            <Text style={styles.bodyTxt2}>
+              {Math.round(correctAnswers/questions.length*100)}% corrected answers
+            </Text>
           </View>
           <ButtonsGroup
             btnTxt1="Restart"
@@ -93,36 +95,40 @@ class QuizView extends React.Component {
     }
 
     return (
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.headerTxt}>{questionIndex + 1}/{questions.length}</Text>
+//      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.header}>
+            <Text style={styles.headerTxt}>{questionIndex + 1}/{questions.length}</Text>
+          </View>
+          <ScrollView>
+            <View style={styles.body}>
+              <Text style={styles.bodyTxt1}>
+                {(showAnswer)
+                  ? (questions[questionIndex]['answer'])
+                  : (questions[questionIndex]['question'])}
+              </Text>
+              <TouchableOpacity
+                onPress={this.handleToggleShowAnswer}>
+                <Text style={styles.bodyTxt2}>
+                  {(!showAnswer)
+                    ? ('Answer')
+                    : ('Question')}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
+          <ButtonsGroup
+            btnTxt1="Correct"
+            btnTxtColor1={white}
+            btnBackgroundColor1={green}
+            btnHandle1={this.handleCorrect}
+            btnTxt2="Incorrect"
+            btnTxtColor2={white}
+            btnBackgroundColor2={red}
+            btnHandle2={this.handleIncorrect}
+          />
         </View>
-        <View style={styles.body}>
-          <Text style={styles.bodyTxt1}>
-            {(showAnswer)
-              ? (questions[questionIndex]['answer'])
-              : (questions[questionIndex]['question'])}
-          </Text>
-          <TouchableOpacity
-            onPress={this.handleToggleShowAnswer}>
-            <Text style={styles.bodyTxt2}>
-              {(!showAnswer)
-                ? ('Answer')
-                : ('Question')}
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <ButtonsGroup
-          btnTxt1="Correct"
-          btnTxtColor1={white}
-          btnBackgroundColor1={green}
-          btnHandle1={this.handleCorrect}
-          btnTxt2="Incorrect"
-          btnTxtColor2={white}
-          btnBackgroundColor2={red}
-          btnHandle2={this.handleIncorrect}
-        />
-      </View>
+//      </ScrollView>
     );
   }
 }
@@ -130,8 +136,8 @@ class QuizView extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'space-between',
     backgroundColor: white,
   },
   header: {
@@ -142,10 +148,11 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   body:{
-
+    flex: 1,
+    justifyContent:'center',
   },
   bodyTxt1: {
-    fontSize: 35,
+    fontSize: 30,
     textAlign: 'center',
     padding: 10,
   },

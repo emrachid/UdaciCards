@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { Animated, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { white, black } from '../utils/colors';
 
 const Button = ({
@@ -11,18 +11,19 @@ const Button = ({
   borderWidth,
   children,
 }) => (
-  <TouchableOpacity
-    style={[styles.btn, {
-      backgroundColor: btnBackgroundColor,
-      opacity: opacity,
-      borderWidth: borderWidth,
-    }]}
-    onPress={btnHandle}
-    disabled={disabled}>
-    <Text style={[styles.btnTxt, {color: btnTxtColor}]}>
-      {children}
-    </Text>
-  </TouchableOpacity>
+  <Animated.View style={{ opacity }}>
+    <TouchableOpacity
+      style={[styles.btn, {
+        backgroundColor: btnBackgroundColor,
+        borderWidth: borderWidth,
+      }]}
+      onPress={btnHandle}
+      disabled={disabled}>
+      <Text style={[styles.btnTxt, {color: btnTxtColor}]}>
+        {children}
+      </Text>
+    </TouchableOpacity>
+  </Animated.View>
 );
 
 const styles = StyleSheet.create({

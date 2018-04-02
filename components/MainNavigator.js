@@ -6,7 +6,6 @@ import QuizView from '../containers/QuizView';
 import AddCard from '../containers/AddCard';
 import { black, white } from '../utils/colors';
 import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator';
-import { defaultTransitionConfig } from "react-navigation/src/views/CardStack/TransitionConfigs";
 
 const MainNavigator = StackNavigator({
   Home: {

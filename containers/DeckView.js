@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, View, Text } from 'react-native';
-import { CommonStyles } from '../components/CommonStyles';
-import { black, white } from '../utils/colors';
+import { black, white, gray } from '../utils/colors';
 import ButtonsGroup from '../components/ButtonsGroup';
 
 class DeckView extends React.Component {
@@ -35,11 +34,11 @@ class DeckView extends React.Component {
 
     return (
       <View style={styles.container}>
-        <View style={CommonStyles.titleCardsGroup}>
-          <Text style={CommonStyles.title}>
+        <View style={styles.titleCardsGroup}>
+          <Text style={styles.title}>
             {title}
           </Text>
-          <Text style={CommonStyles.cardsCount}>
+          <Text style={styles.cardsCount}>
             {cardsCount} cards
           </Text>
         </View>
@@ -66,6 +65,20 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: white,
+  },
+  title: {
+    fontSize: 35,
+    color: black,
+    textAlign: 'center',
+  },
+  cardsCount: {
+    fontSize: 25,
+    color: gray,
+    textAlign: 'center',
+  },
+  titleCardsGroup: {
+    flex:1,
+    justifyContent: 'center',
   },
 });
 
